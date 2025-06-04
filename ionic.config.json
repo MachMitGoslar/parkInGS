@@ -1,0 +1,7 @@
+{
+  "name": "parkinGS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
