@@ -1,0 +1,32 @@
+@if ((current_user | async) != null || override_user) { 
+  <div class="button_container">
+    <ion-button shape="round" color="danger" (click)="decrease()" [disabled]="area.occupied <= 0">
+      <ion-icon name="remove"></ion-icon>
+    </ion-button>
+    <ion-button
+      shape="round"
+      color="primary"
+      [disabled]="!(area.occupied < area.capacity)"
+      (click)="increase()"
+      >
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="button_container">
+    <ion-button shape="round" color="danger" (click)="setAmount(1)">
+          Voll
+    </ion-button>
+    <ion-button shape="round" color="danger" (click)="setAmount(0.75)">
+          3/4 voll
+    </ion-button>
+    <ion-button shape="round" color="danger" (click)="setAmount(0.5)">
+          halb voll
+    </ion-button>
+    <ion-button shape="round" color="danger" (click)="setAmount(0.25)">
+          1/4 voll
+    </ion-button>
+    <ion-button shape="round" color="danger" (click)="setAmount(0)">
+          leer
+    </ion-button>
+  </div>
+}

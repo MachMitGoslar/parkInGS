@@ -1,0 +1,10 @@
+
+@if(active|async) {
+  <ion-button>
+    <ion-icon color="primary" name="locate"></ion-icon>
+  </ion-button>
+} @else {
+  <ion-button (click)="activate()">
+    <ion-icon  name="locate"></ion-icon>
+  </ion-button>
+}

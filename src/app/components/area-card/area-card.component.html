@@ -1,0 +1,27 @@
+<ion-card (click)="openArea(area)">
+  <ion-card-header>
+            <ion-card-subtitle> {{area.updatedAt | date:"dd.MM.yyyy - HH:mm:ss" }} | {{area.distance_from_you | number : '1.0-0'}} m </ion-card-subtitle>
+
+    <ion-card-title>
+      <div class="title_bar">
+        <h1 slot="middle">{{area.name}} </h1>
+        <app-occupied-badge slot="end" [occupied]="area.occupied" [capacity]="area.capacity"> </app-occupied-badge>
+      </div>
+    </ion-card-title>
+
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-icon slot="start" name="location"></ion-icon>
+      <ion-label>
+        <p>{{area.readable_street}} </p>
+        <p>{{area.readable_plz}} {{area.readable_city}}</p>
+      </ion-label>
+
+
+    </ion-item>
+
+
+  </ion-card-content>
+</ion-card>

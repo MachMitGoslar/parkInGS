@@ -1,0 +1,18 @@
+.login_container {
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px
+}
+
+.login_container img {
+    height: 33vh;
+}
+
+.login_container div {
+    height: 66vh;
+    display: flex;
+    align-items: center;
+}

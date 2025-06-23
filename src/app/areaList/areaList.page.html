@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Parkplätze
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+        <ion-buttons slot="end">
+      <app-location-button></app-location-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true" fixedSlotPlacement="before">
+  @if ((userSrv.user | async); as user) {
+    <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+      <ion-fab-button>
+        <ion-icon name="add" (click)="editArea()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  }
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Parkflächen</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+
+
+    @if ((userSrv.user | async); as user) {
+      @for (area of (areas | async); track area) {
+        <ion-item-sliding>
+          <ion-item-options side="end">
+            <ion-item-option color="secondary" (click)="editArea(area)">Edit</ion-item-option>
+            <ion-item-option (click)="deleteArea(area)" color="danger">Delete</ion-item-option>
+          </ion-item-options>
+          <ion-item detail (click)="openArea(area)">
+            <ion-icon slot="start" name="location"></ion-icon>
+            <ion-label>
+              <h2>{{area.name}}</h2>
+              <p> {{area.readable_street}} | {{area.readable_plz}} {{area.readable_city}} </p>
+            </ion-label>
+            <app-occupied-badge slot="end" [occupied]="area.occupied" [capacity]="area.capacity"> </app-occupied-badge>
+          </ion-item>
+        </ion-item-sliding>
+      }
+    }
+    @else {
+      @for (area of (areas | async); track area; let index = $index) {
+        <app-area-card [area]="area"></app-area-card>
+      }
+    }
+
+  </ion-list>
+</ion-content>

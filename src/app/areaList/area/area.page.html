@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    @if (area | async; as narea) {
+      <ion-title>{{ narea.name }} </ion-title>
+    }
+    <ion-buttons slot="end">
+      @if (pageType_internal) {
+        <ion-button (click)="confirm()" [strong]="true">Okay</ion-button>
+      } @else {
+        <app-location-button></app-location-button>
+      }
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+@if (area | async; as narea) {
+  <ion-content [fullscreen]="true">
+    <app-fixed-map
+      [areas]="[narea]"
+      [height]="'33%'"
+      class="half_map"
+    ></app-fixed-map>
+    <ion-list>
+      <ion-item *ngIf="narea.distance_from_you">
+        <ion-label> Entfernung</ion-label>
+        <ion-note slot="end">
+          <p>
+            {{narea.distance_from_you | number: "1.1-2" }}
+          </p>
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label> Location </ion-label>
+        <ion-note slot="end">
+          <p>
+            {{narea.readable_street}} | {{narea.readable_plz}}
+            {{narea.readable_city}}
+          </p>
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label> Füllstand </ion-label>
+        <ion-note slot="end">
+          <p>{{narea.occupied}} / {{narea.capacity}}</p>
+        </ion-note>
+      </ion-item>
+      <app-parking-controls [override_user]="!pageType_internal" [area]="narea"></app-parking-controls>
+    </ion-list>
+  </ion-content>
+}

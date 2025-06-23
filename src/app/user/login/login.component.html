@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true">
+
+  <div class="login_container">
+    <img src="assets/imgs/mmh_logo.svg">
+    <form [formGroup]="login_form" class="credential_container">
+      <ion-input label="email" labelPlacement="stacked" type="text" formControlName="email"></ion-input>
+      <ion-input label="password"  labelPlacement="stacked" type="password" formControlName="password"></ion-input>
+      <ion-button (click)="submit()" [disabled]="!login_form.valid"> Login </ion-button>
+    </form>
+
+  </div>
+
+</ion-content>

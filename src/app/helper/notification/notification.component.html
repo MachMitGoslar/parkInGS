@@ -1,0 +1,15 @@
+@for (log of logs | async; track log) {
+  <div>
+    <ion-toast
+      [message]= "log.msg"
+      trigger="open-toast"
+      swipeGesture="vertical"
+      position="bottom"
+      positionAnchor="footer"
+      [color]=log.logLevel
+      [isOpen]="true"
+      [buttons]="ToastButtons"
+      (didDismiss)="removeLog($event)"
+    ></ion-toast>
+  </div>
+}

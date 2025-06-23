@@ -7,11 +7,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <app-map [drawing]="drawing" [(points)]="points"></app-map>
+
+  <ion-fab slot="fixed" horizontal="end" vertical="center">
+    <ion-fab-button >
+      @if (!drawing) {
+        <ion-icon name="pencil" (click)="startDrawing()"></ion-icon>
+      }
+      @if (drawing) {
+        <ion-icon color="green" (click)="finishDrawing()" name="add"></ion-icon>
+      }
+    </ion-fab-button>
+    @if (drawing) {
+      <ion-fab-button color="red">
+        <ion-icon (click)="scrapDrawing()"  name="close"></ion-icon>
+      </ion-fab-button>
+    }
+  </ion-fab>
 </ion-content>
