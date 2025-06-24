@@ -30,20 +30,19 @@ export class QrcodeComponent  implements OnInit {
   @Input() area: ParkingArea = new ParkingArea()
 
   public qrDownloadLink: SafeUrl = "";
-  public qrData: SafeUrl ="";
+  public qrData: SafeUrl ="t";
 
   constructor(
     public modalCtrl: ModalController
   ) {
-                console.log(this.area.ref)
-
-                this.qrData = location.href+"area/"+this.area.ref?.id
 
    }
 
   ngOnInit() {}
 
      onChangeURL(url: SafeUrl) {
+
+                this.qrData = location.href+"area/"+this.area.ref?.id
 
       this.qrDownloadLink = url;
     }
