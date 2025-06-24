@@ -7,15 +7,14 @@ import {
   IonCardTitle,
   ModalController,
   IonIcon,
-  IonItem,
-  IonLabel,
-  IonList
+  IonButton,
+
 } from "@ionic/angular/standalone"
 import { AreaPage } from 'src/app/areaList/area/area.page';
 import { OccupiedBadgeComponent } from 'src/app/helper/occupied-badge/occupied-badge.component';
 import { ParkingArea } from 'src/app/helper/parkingArea';
 import { addIcons } from 'ionicons';
-import { location } from 'ionicons/icons';
+import { location, navigate } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
 import { DistancePipe } from 'src/app/pipes/distance.pipe';
 
@@ -31,9 +30,8 @@ import { DistancePipe } from 'src/app/pipes/distance.pipe';
       IonCardTitle,
       OccupiedBadgeComponent,
       IonIcon,
-      IonItem,
+      IonButton,
       CommonModule,
-      IonLabel,
       DistancePipe
   ]
 })
@@ -45,7 +43,8 @@ export class AreaCardComponent  implements OnInit {
     public modalCtrl: ModalController
   ) {
     addIcons({
-      location
+      location,
+      navigate
     })
    }
 
@@ -61,4 +60,7 @@ export class AreaCardComponent  implements OnInit {
       modal.present();
     }
 
+    get rand() {
+      return Math.floor(Math.random()*10000)
+    }
 }

@@ -1,37 +1,31 @@
 <ion-card (click)="openArea(area)">
+      <img alt="Silhouette of mountains" [src]="'https://picsum.photos/seed/'+rand+'/1200/400'" />
+
   <ion-card-header>
-          @if(area.distance_from_you) {
-            <ion-card-subtitle > 
-              <ion-icon name="location"></ion-icon>
-            {{area.distance_from_you! | distance }}
-            </ion-card-subtitle>
-          } @else {
-            <ion-card-subtitle > 
-
-              {{area.updatedAt | date:"dd.MM.yyyy - HH:mm:ss" }}
-            </ion-card-subtitle>
-          }
-
-
     <ion-card-title>
       <div class="title_bar">
         <h1 slot="middle">{{area.name}} </h1>
-        <app-occupied-badge slot="end" [occupied]="area.occupied" [capacity]="area.capacity"> </app-occupied-badge>
       </div>
     </ion-card-title>
+    @if(area.distance_from_you) {
+    <ion-card-subtitle>
+      <ion-icon name="location"></ion-icon>
+      {{area.distance_from_you! | distance }}
+    </ion-card-subtitle>
+    } @else {
+    <ion-card-subtitle>
+      {{area.updatedAt | date:"dd.MM.yyyy - HH:mm:ss" }}
+    </ion-card-subtitle>
+    }
 
   </ion-card-header>
 
   <ion-card-content>
-    <ion-item>
-      <ion-label>
-        <p>{{area.readable_street}} </p>
-        <p>{{area.readable_plz}} {{area.readable_city}}</p>
-      </ion-label>
+    <app-occupied-badge slot="end" [occupied]="area.occupied" [capacity]="area.capacity"> </app-occupied-badge>
 
-
-    </ion-item>
-
-
+    <ion-button fill="outline">
+      <ion-icon slot="start" name="navigate"></ion-icon>
+      Navigation
+    </ion-button>
   </ion-card-content>
 </ion-card>

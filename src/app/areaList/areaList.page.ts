@@ -15,7 +15,9 @@ import {
   IonFab,
   IonFabButton,
   IonMenuButton,
-  IonButtons
+  IonButtons,
+  IonGrid,
+  IonCol
 } from '@ionic/angular/standalone';
 import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { ParkingArea } from '../helper/parkingArea';
@@ -54,7 +56,9 @@ import { LocationService } from '../services/location.service';
     IonMenuButton,
     IonButtons,
     AreaCardComponent,
-    LocationButtonComponent
+    LocationButtonComponent,
+    IonGrid,
+    IonCol
 ],
   providers: [
     AreaEditPage

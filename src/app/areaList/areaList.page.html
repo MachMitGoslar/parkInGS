@@ -38,7 +38,7 @@
             <ion-item-option (click)="deleteArea(area)" color="danger">Delete</ion-item-option>
           </ion-item-options>
           <ion-item detail (click)="openArea(area)">
-            <ion-icon slot="start" name="location"></ion-icon>
+            <ion-icon color="primary" slot="start" name="location"></ion-icon>
             <ion-label>
               <h2>{{area.name}}</h2>
               <p> {{area.readable_street}} | {{area.readable_plz}} {{area.readable_city}} </p>
@@ -49,9 +49,15 @@
       }
     }
     @else {
+              <ion-grid>
+          <ion-col>
       @for (area of (areas | async); track area; let index = $index) {
+
         <app-area-card [area]="area"></app-area-card>
+
       }
+              </ion-col>
+        </ion-grid>
     }
 
   </ion-list>

@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocationButtonComponent } from 'src/app/components/location-button/location-button.component';
 import { addIcons } from 'ionicons';
 import { navigate } from 'ionicons/icons';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-area',
@@ -52,7 +53,8 @@ export class AreaPage implements OnInit, OnDestroy {
     public parkingAreaSrv: ParkingAreaService, 
     private modalCtrl: ModalController,
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public userSrv: UserService
   ) { 
     
     addIcons({
@@ -63,9 +65,11 @@ export class AreaPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // Handle Permissions after directly login in
     if(this.route.snapshot.params['uuid']) {
       this.ref = this.parkingAreaSrv.getRefFromString(this.route.snapshot.params['uuid'])
       this.pageType_internal = false;
+      this.userSrv.loginAnon();
     }
     console.log("Ref: ", this.ref)
     this.area = this.parkingAreaSrv.getAreaByRef(this.ref!)

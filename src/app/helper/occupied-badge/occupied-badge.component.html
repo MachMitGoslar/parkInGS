@@ -1,1 +1,5 @@
-<ion-badge [style]="style" [slot]="slot">{{occupied}} / {{capacity}}</ion-badge>
+<!-- <ion-badge [style]="style" [slot]="slot">{{occupied}} / {{capacity}}</ion-badge> -->
+Füllstand
+<div class="progress_bar_div" > 
+<div class="progress_bar_fg" [style]="'clip-path: polygon(0% 0%, '+amount+'% 0%, '+amount+'% 100%, 00% 100%)'"></div>
+</div>

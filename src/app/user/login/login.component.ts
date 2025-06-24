@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import {
   IonContent,
   IonButton,
-  IonInput
+  IonInput,
+  IonGrid,
 } from "@ionic/angular/standalone";
 import { LogControllerService, LogLevel, StatusCode } from 'src/app/helper/log-controller.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +18,8 @@ import { UserService } from 'src/app/services/user.service';
     IonContent,
     ReactiveFormsModule,
     IonButton,
-    IonInput
+    IonInput,
+    IonGrid,
   ]
 })
 export class LoginComponent  implements OnInit {

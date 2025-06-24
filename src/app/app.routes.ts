@@ -1,18 +1,20 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './user/login/login.component';
+import { firestoreGuard } from './guards/firestore.guard';
 
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'edit',
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
+    canActivate: [firestoreGuard]
   },
   {
     path: 'login',
     loadComponent: () => import('./user/login/login.component').then( m => m.LoginComponent)
   },
   {
-    path: 'areas',
+    path: '',
     loadComponent: () => import('./areaList/areaList.page').then( m => m.AreaListPage)
   },
   {

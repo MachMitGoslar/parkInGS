@@ -110,7 +110,7 @@ export class ParkingAreaService {
 
     setAmount(area: ParkingArea, factor: number): void {
       updateDoc(area.ref!, {
-        "occupied": area.capacity * factor
+        "occupied": Math.floor(area.capacity * factor)
       }).then(() => console.log("Setting amount to " + factor*100))
     }
 
