@@ -43,8 +43,9 @@ import { LogControllerService, LogLevel } from 'src/app/helper/log-controller.se
 
 export class AreaEditPage implements OnInit {
 
-  @Input() area: ParkingArea = new ParkingArea()
-  public points: GeoPoint[] = []
+  @Input() area: ParkingArea = new ParkingArea();
+  private initialPoints: GeoPoint[] = [];
+
   public form: FormGroup
 
 
@@ -59,6 +60,7 @@ export class AreaEditPage implements OnInit {
   }
 
   ngOnInit() {
+    this.initialPoints = this.area.borderPoints;
     this.form = this.fb.group({
       "name": new FormControl(this.area.name, [Validators.required]),
       "address": new FormControl(this.area.readable_street, [Validators.required]),
@@ -77,6 +79,8 @@ export class AreaEditPage implements OnInit {
 
 
   cancel() {
+    //restore original Points
+    this.area.borderPoints = this.initialPoints;
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 

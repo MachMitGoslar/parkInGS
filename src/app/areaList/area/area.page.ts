@@ -5,12 +5,13 @@ import { IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, 
 import { ParkingArea } from 'src/app/helper/parkingArea';
 import { ParkingAreaService } from 'src/app/services/parking-area.service';
 import { DocumentReference, GeoPoint } from '@angular/fire/firestore';
-import { find, map, Subject, Subscription } from 'rxjs';
-import { UserService } from 'src/app/services/user.service';
+import { Subject, Subscription } from 'rxjs';
 import { FixedMapComponent } from 'src/app/helper/fixed-map/fixed-map.component';
 import { ParkingControlsComponent } from 'src/app/components/parking-controls/parking-controls.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocationButtonComponent } from 'src/app/components/location-button/location-button.component';
+import { addIcons } from 'ionicons';
+import { navigate } from 'ionicons/icons';
 
 @Component({
   selector: 'app-area',
@@ -28,6 +29,7 @@ import { LocationButtonComponent } from 'src/app/components/location-button/loca
     IonButton, 
     IonList, 
     IonItem, 
+    IonIcon,
     IonNote, 
     IonLabel, 
     FixedMapComponent,
@@ -44,13 +46,18 @@ export class AreaPage implements OnInit, OnDestroy {
   public area: Subject<ParkingArea>
   public points: GeoPoint[] = []
   private subscriptions: Subscription[] = [];
+  private localArea?: ParkingArea
 
   constructor(
     public parkingAreaSrv: ParkingAreaService, 
     private modalCtrl: ModalController,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public router: Router
   ) { 
     
+    addIcons({
+      navigate
+    })
     this.area = new Subject()
 
   }
@@ -62,7 +69,9 @@ export class AreaPage implements OnInit, OnDestroy {
     }
     console.log("Ref: ", this.ref)
     this.area = this.parkingAreaSrv.getAreaByRef(this.ref!)
-    this.area.subscribe(value => console.log("area is: ", value))
+    this.area.subscribe(value => {
+      this.localArea = value
+    })
   }
 
   ngOnDestroy() {

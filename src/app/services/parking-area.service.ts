@@ -3,7 +3,7 @@ import { collection, collectionChanges, collectionSnapshots, docSnapshots, Docum
 import { map, Observable, ReplaySubject, Subject } from 'rxjs';
 import { ParkingArea } from '../helper/parkingArea';
 import { addDoc, deleteDoc, doc, FieldValue, GeoPoint, getDoc, increment, onSnapshot, serverTimestamp, setDoc, updateDoc } from '@firebase/firestore';
-import L from "leaflet";
+import L, { LatLng } from "leaflet";
 
 @Injectable({
   providedIn: 'root'
@@ -123,10 +123,10 @@ export class ParkingAreaService {
 
           a.distance_from_you = a_point.distanceTo(reference_point)
           b.distance_from_you = b_point.distanceTo(reference_point)
-
-          if( a.distance_from_you > b.distance_from_you ) {
+          
+          if( a.distance_from_you < b.distance_from_you ) {
             
-            return 0
+            return -1
           } else {
             return 1
           }
@@ -134,11 +134,11 @@ export class ParkingAreaService {
       })) 
     }
 
-    private make_a_point(geo_point: GeoPoint): L.Point {
+    private make_a_point(geo_point: GeoPoint): L.LatLng {
       if(geo_point) {
-        return new L.Point(geo_point.latitude, geo_point.longitude);
+        return new L.LatLng(geo_point.latitude, geo_point.longitude);
       } else {
-        return new L.Point(0,0)
+        return new L.LatLng(0,0)
       }
       
 

@@ -17,6 +17,7 @@ import { ParkingArea } from 'src/app/helper/parkingArea';
 import { addIcons } from 'ionicons';
 import { location } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
+import { DistancePipe } from 'src/app/pipes/distance.pipe';
 
 @Component({
   selector: 'app-area-card',
@@ -32,7 +33,8 @@ import { CommonModule } from '@angular/common';
       IonIcon,
       IonItem,
       CommonModule,
-      IonLabel
+      IonLabel,
+      DistancePipe
   ]
 })
 export class AreaCardComponent  implements OnInit {
