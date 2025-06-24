@@ -9,9 +9,14 @@
     </ion-header>
 
 <ion-content>
-
-</ion-content>
+@if(area.ref) {
 <div class="qr_code_div">
     <qrcode (qrCodeURL)="onChangeURL($event)" [title]="area.name" [qrdata]="qrData.toString()" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 <ion-button color="primary" fill="outline" [href]="qrDownloadLink" download="qrcode">  Download</ion-button>
 </div>
+} @else {
+  <h1> Keine Referenz gefunden</h1>
+}
+</ion-content>
+
+

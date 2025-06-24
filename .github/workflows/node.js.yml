@@ -29,7 +29,7 @@ jobs:
     - run: node server.js
       env:
         FIRESTOREDETAILS: '${{secrets.FIRESTOREDETAILS}}'
+        BASE_HREF: '${{vars.BASE_HREF}}'
     - run: npm ci
     - run: npm run build --if-present
     - run: npm install
-    - run: npm run build

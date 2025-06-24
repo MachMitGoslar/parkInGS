@@ -1,7 +1,7 @@
-<ion-card (click)="openArea(area)">
+<ion-card >
       <img alt="Silhouette of mountains" [src]="'https://picsum.photos/seed/'+rand+'/1200/400'" />
 
-  <ion-card-header>
+  <ion-card-header (click)="openArea(area)">
     <ion-card-title>
       <div class="title_bar">
         <h1 slot="middle">{{area.name}} </h1>

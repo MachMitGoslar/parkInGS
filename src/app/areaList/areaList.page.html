@@ -51,7 +51,7 @@
     @else {
               <ion-grid>
           <ion-col>
-      @for (area of (areas | async); track area; let index = $index) {
+      @for (area of (areas | async); track area) {
 
         <app-area-card [area]="area"></app-area-card>
 

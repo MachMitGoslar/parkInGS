@@ -22,7 +22,6 @@
               "base": "parkings",
               "browser": ""
             },
-            "baseHref": "/parkings/",
             "index": "src/index.html",
             "polyfills": [
               "src/polyfills.ts"
