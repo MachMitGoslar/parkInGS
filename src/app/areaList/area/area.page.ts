@@ -98,21 +98,21 @@ export class AreaPage implements OnInit, OnDestroy {
     //return this.modalCtrl.dismiss(this.name, 'confirm');
   }
 
-  async openQR() {
+  async openQR(area: ParkingArea) {
         let modal = await this.modalCtrl.create({
           component: QrcodeComponent,
           componentProps: {
-            area: this.area,
+            area: area,
           },
         });
         modal.present();
   }
 
-    async edit() {
+    async edit(area: ParkingArea) {
         let modal = await this.modalCtrl.create({
           component: AreaEditPage,
           componentProps: {
-            area: this.area,
+            area: area,
           },
         });
         

@@ -18,14 +18,12 @@
       </ion-button>
       }
       @else {
-        <ion-button (click)="openQR()">
+        <ion-button (click)="openQR(narea)">
           <ion-icon  color="primary" name="qr-code-outline"></ion-icon>
         </ion-button>
-        <!-- TODO: LOAD EDIT IN MODAL
-          <ion-button (click)="edit()">
+          <ion-button (click)="edit(narea)">
             <ion-icon name="settings-outline"></ion-icon>
           </ion-button> 
-        -->
       }
 
     </ion-buttons>
