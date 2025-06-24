@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
@@ -56,6 +56,7 @@ export class AreaEditPage implements OnInit {
     private fb: FormBuilder,
   ) { 
     this.form = new FormGroup([])
+    
 
   }
 
@@ -76,6 +77,7 @@ export class AreaEditPage implements OnInit {
       this.area.capacity = values.capacity
     })
   }
+
 
 
   cancel() {

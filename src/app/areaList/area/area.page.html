@@ -11,13 +11,22 @@
     <ion-buttons slot="end">
       @if(!pageType_internal) {
       <app-location-button></app-location-button>
-
-      }
       <ion-button>
         <a [href]="'maps://maps.google.com/?q='+narea.borderPoints[0].latitude+','+narea.borderPoints[0].longitude">
         <ion-icon name="navigate"></ion-icon>
         </a>
       </ion-button>
+      }
+      @else {
+        <ion-button (click)="openQR()">
+          <ion-icon  color="primary" name="qr-code-outline"></ion-icon>
+        </ion-button>
+        <!-- TODO: LOAD EDIT IN MODAL
+          <ion-button (click)="edit()">
+            <ion-icon name="settings-outline"></ion-icon>
+          </ion-button> 
+        -->
+      }
 
     </ion-buttons>
         }
@@ -52,6 +61,9 @@
       </ion-note>
     </ion-item>
     <app-parking-controls [override_user]="!pageType_internal" [area]="narea"></app-parking-controls>
+    <hr />
+
+
   </ion-list>
 </ion-content>
 }

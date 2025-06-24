@@ -11,8 +11,11 @@ import { ParkingControlsComponent } from 'src/app/components/parking-controls/pa
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationButtonComponent } from 'src/app/components/location-button/location-button.component';
 import { addIcons } from 'ionicons';
-import { navigate } from 'ionicons/icons';
+import { navigate, qrCodeOutline, settingsOutline } from 'ionicons/icons';
 import { UserService } from 'src/app/services/user.service';
+import { QrcodeComponent } from 'src/app/components/qrcode/qrcode.component';
+import { AreaEditPage } from '../areaEdit/area-edit.page';
+
 
 @Component({
   selector: 'app-area',
@@ -35,7 +38,7 @@ import { UserService } from 'src/app/services/user.service';
     IonLabel, 
     FixedMapComponent,
     ParkingControlsComponent,
-    LocationButtonComponent
+    LocationButtonComponent,
   ]
 })
 
@@ -49,6 +52,7 @@ export class AreaPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   private localArea?: ParkingArea
 
+
   constructor(
     public parkingAreaSrv: ParkingAreaService, 
     private modalCtrl: ModalController,
@@ -58,7 +62,7 @@ export class AreaPage implements OnInit, OnDestroy {
   ) { 
     
     addIcons({
-      navigate
+      navigate, qrCodeOutline, settingsOutline
     })
     this.area = new Subject()
 
@@ -71,7 +75,6 @@ export class AreaPage implements OnInit, OnDestroy {
       this.pageType_internal = false;
       this.userSrv.loginAnon();
     }
-    console.log("Ref: ", this.ref)
     this.area = this.parkingAreaSrv.getAreaByRef(this.ref!)
     this.area.subscribe(value => {
       this.localArea = value
@@ -95,6 +98,28 @@ export class AreaPage implements OnInit, OnDestroy {
     //return this.modalCtrl.dismiss(this.name, 'confirm');
   }
 
+  async openQR() {
+        let modal = await this.modalCtrl.create({
+          component: QrcodeComponent,
+          componentProps: {
+            area: this.area,
+          },
+        });
+        modal.present();
+  }
+
+    async edit() {
+        let modal = await this.modalCtrl.create({
+          component: AreaEditPage,
+          componentProps: {
+            area: this.area,
+          },
+        });
+        
+        modal.present();
+  }
+
+ 
 
 
 

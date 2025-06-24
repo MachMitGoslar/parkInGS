@@ -1,0 +1,17 @@
+  <ion-toolbar>
+    <ion-header>
+      <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>QR Code</ion-title>
+  </ion-toolbar>
+    </ion-header>
+
+<ion-content>
+
+</ion-content>
+<div class="qr_code_div">
+    <qrcode (qrCodeURL)="onChangeURL($event)" [title]="area.name" [qrdata]="qrData.toString()" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+<ion-button color="primary" fill="outline" [href]="qrDownloadLink" download="qrcode">  Download</ion-button>
+</div>
