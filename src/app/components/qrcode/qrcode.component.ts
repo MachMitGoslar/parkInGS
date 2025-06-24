@@ -35,7 +35,8 @@ export class QrcodeComponent  implements OnInit {
   constructor(
     public modalCtrl: ModalController
   ) {
-          this.qrData = location.protocol+"//"+location.hostname+":"+location.port+"/area/"+this.area.ref?.id
+      console.log(location.href)
+          this.qrData = location.href+"/area/"+this.area.ref?.id
    }
 
   ngOnInit() {}
