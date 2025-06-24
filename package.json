@@ -1,8 +1,8 @@
 {
   "name": "parkinGS",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "0.0.2",
+  "author": "Stadt Goslar",
+  "homepage": "https://goslar.de",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -63,5 +63,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.6.3"
   },
-  "description": "An Ionic project"
+  "description": "Parking in GS Extension"
 }
