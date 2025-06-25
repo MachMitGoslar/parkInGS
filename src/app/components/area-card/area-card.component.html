@@ -1,5 +1,5 @@
 <ion-card >
-      <img alt="Silhouette of mountains" [src]="'https://picsum.photos/seed/'+rand+'/1200/400'" />
+      <img *ngIf="area" alt="Silhouette of mountains" [src]="area_image" />
 
   <ion-card-header (click)="openArea(area)">
     <ion-card-title>

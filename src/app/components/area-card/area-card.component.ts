@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   IonCard,
   IonCardContent,
@@ -35,7 +35,7 @@ import { DistancePipe } from 'src/app/pipes/distance.pipe';
       DistancePipe
   ]
 })
-export class AreaCardComponent  implements OnInit {
+export class AreaCardComponent  implements OnInit, OnChanges {
 
   @Input() area: ParkingArea = new ParkingArea();
 
@@ -46,9 +46,16 @@ export class AreaCardComponent  implements OnInit {
       location,
       navigate
     })
+
+
    }
 
   ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
+
 
     async openArea(area: ParkingArea) {
       let modal = await this.modalCtrl.create({
@@ -60,7 +67,11 @@ export class AreaCardComponent  implements OnInit {
       modal.present();
     }
 
-    get rand() {
-      return Math.floor(Math.random()*10000)
+
+
+    get area_image() {
+      let rand =  Math.floor(Math.random()*10000)
+
+     return 'https://picsum.photos/seed/'+this.area.ref?.id+'/1200/400'
     }
 }

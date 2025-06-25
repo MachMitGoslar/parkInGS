@@ -24,7 +24,6 @@ import { CommonModule } from '@angular/common';
 export class ParkingControlsComponent  implements OnInit {
 
   public current_user: Observable<User | null>
-  public subscriptions: Subscription[] = []
   @Input() area: ParkingArea = new ParkingArea()
   @Input() override_user: boolean = false
   
@@ -38,14 +37,9 @@ export class ParkingControlsComponent  implements OnInit {
   }
 
   ngOnInit() {
-      console.log(this.current_user   )
 
   }
-  ngOnDestroy() {
-    for(let subscription of this.subscriptions) {
-      subscription.unsubscribe()
-    }
-  }
+
 
   decrease() {
     console.log("Decreasing")

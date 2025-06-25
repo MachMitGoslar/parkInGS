@@ -53,7 +53,7 @@ export class LoginComponent  implements OnInit {
     
     this.userSrv.login(this.email, this.password).then((user) => {
       this.logSrv.addLog("Willkommen "+ user?.displayName, LogLevel.Success, 200)
-      this.router.navigate(["/"])
+      this.router.navigate(["/edit/tab2"])
     }, error => {
       this.logSrv.addLog(error, LogLevel.Danger, StatusCode.NotFound)
     })

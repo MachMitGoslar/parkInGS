@@ -79,16 +79,20 @@ export class AreaListPage {
   ) {
           this.areas = parkingService.areas
 
-    locationService.$active.subscribe(active => {
-      console.log("Location is:", active)
+    locationService.$active.subscribe({
+      next: (active) => {
       if(active && locationService.position) {
         this.areas = parkingService.sortByLocation(locationService.position)
       } else {
-        this.areas = parkingService.areas
+        this.areas = parkingService.areas 
       }
-    }, error => {
-      console.log("Whole list")
-    })
+      },
+      error: (error) => {
+
+      }
+    }
+    )
+
     addIcons({ location, add});
   }
 
@@ -105,7 +109,6 @@ export class AreaListPage {
 
   
   deleteArea(area: ParkingArea) {
-    console.log('Deleting:', area);
     this.parkingService.delete(area.ref).then(
       () => {
         this.logSrv.addLog('Erfolgreich gelöscht', LogLevel.Success, 200);

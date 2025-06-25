@@ -20,6 +20,7 @@ export class ParkingAreaService {
 
     collectionSnapshots(query(collection(this.firestore,'parkingArea'))).subscribe(snapshot => {
       this.local_areas = snapshot.map(data => {
+        console.log("Returning area")
         return ParkingArea.fromData(data)
       })
       this.areas.next(this.local_areas);
