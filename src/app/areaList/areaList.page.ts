@@ -20,15 +20,15 @@ import {
   IonCol
 } from '@ionic/angular/standalone';
 import { Observable, ReplaySubject, Subscription } from 'rxjs';
-import { ParkingArea } from '../helper/parkingArea';
+import { ParkingArea } from '../services/parkingArea';
 import { ParkingAreaService } from '../services/parking-area.service';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { location, add } from 'ionicons/icons';
 import {AreaPage } from './area/area.page'
-import {  LogLevel, LogControllerService } from '../helper/log-controller.service';
+import {  LogLevel, LogControllerService } from '../services/log-controller.service';
 import { AreaEditPage } from './areaEdit/area-edit.page';
-import { OccupiedBadgeComponent } from '../helper/occupied-badge/occupied-badge.component';
+import { OccupiedBadgeComponent } from '../components/occupied-badge/occupied-badge.component';
 import { UserService } from '../services/user.service';
 import { AreaCardComponent } from "../components/area-card/area-card.component";
 import { LocationButtonComponent } from '../components/location-button/location-button.component';

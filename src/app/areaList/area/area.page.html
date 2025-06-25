@@ -5,19 +5,20 @@
 
     <ion-buttons slot="start">
       @if (pageType_internal) {
-      <ion-button (click)="confirm()" [strong]="true">Zurück</ion-button>
+      <ion-button (click)="cancel()" [strong]="true">Zurück</ion-button>
       }
     </ion-buttons>
     <ion-buttons slot="end">
-      @if(!pageType_internal) {
-      <app-location-button></app-location-button>
+      @if(pageType_internal) {
       <ion-button>
         <a [href]="'maps://maps.google.com/?q='+narea.borderPoints[0].latitude+','+narea.borderPoints[0].longitude">
         <ion-icon name="navigate"></ion-icon>
         </a>
       </ion-button>
       }
-      @else {
+      @if(!pageType_internal || userSrv.user ) {
+              <app-location-button></app-location-button>
+
         <ion-button (click)="openQR(narea)">
           <ion-icon  color="primary" name="qr-code-outline"></ion-icon>
         </ion-button>

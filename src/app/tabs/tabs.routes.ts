@@ -8,37 +8,24 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'mapPage',
         loadComponent: () =>
-          import('../tab1/tab1.page').then((m) => m.Tab1Page),
-                canActivate: [firestoreGuard]
+          import('../map/map.page').then((m) => m.MapPage),
+        canActivate: [firestoreGuard]
 
       },
       {
-        path: 'tab2',
+        path: 'areaList',
         loadComponent: () =>
           import('../areaList/areaList.page').then((m) => m.AreaListPage),
         canActivate: [firestoreGuard]
-
-      },
-      {
-        path: 'tab3',
-        loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
-        canActivate: [firestoreGuard]
-      },
-      {
-        path: '',
-        redirectTo: '/edit/tab1',
-        pathMatch: 'full',
-                    canActivateChild: [firestoreNestedGuard]
 
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/edit/tab2',
+    redirectTo: '/edit/areaList',
     pathMatch: 'full',
 
   },

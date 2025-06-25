@@ -3,8 +3,7 @@ import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonMenu } from '@i
 import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
 import * as L from 'leaflet';
-import { SettingsMenuComponent } from "../helper/settings-menu/settings-menu.component";
-import { AreaPage } from '../areaList/area/area.page';
+import { SettingsMenuComponent } from "../components/settings-menu/settings-menu.component";
 
 @Component({
   selector: 'app-tabs',

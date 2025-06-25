@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 import { addIcons } from 'ionicons';
 import { add, remove} from "ionicons/icons"
 import { ParkingAreaService } from 'src/app/services/parking-area.service';
-import { ParkingArea } from 'src/app/helper/parkingArea';
+import { ParkingArea } from 'src/app/services/parkingArea';
 import { CommonModule } from '@angular/common';
 
 @Component({

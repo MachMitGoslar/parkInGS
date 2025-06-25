@@ -12,8 +12,8 @@ import {
 import * as L from 'leaflet';
 import { GeoPoint } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { MapService } from '../services/map.service';
-import { LocationService } from '../services/location.service';
+import { MapService } from '../../services/map.service';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-map',

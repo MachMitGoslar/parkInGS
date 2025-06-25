@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { collection, collectionChanges, collectionSnapshots, docSnapshots, DocumentReference, Firestore, getDocs, query } from '@angular/fire/firestore';
 import { map, Observable, ReplaySubject, Subject } from 'rxjs';
-import { ParkingArea } from '../helper/parkingArea';
+import { ParkingArea } from './parkingArea';
 import { addDoc, deleteDoc, doc, FieldValue, GeoPoint, getDoc, increment, onSnapshot, serverTimestamp, setDoc, updateDoc } from '@firebase/firestore';
 import L, { LatLng } from "leaflet";
 
@@ -20,7 +20,6 @@ export class ParkingAreaService {
 
     collectionSnapshots(query(collection(this.firestore,'parkingArea'))).subscribe(snapshot => {
       this.local_areas = snapshot.map(data => {
-        console.log("Returning area")
         return ParkingArea.fromData(data)
       })
       this.areas.next(this.local_areas);

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
-import { ParkingArea } from 'src/app/helper/parkingArea';
+import { ParkingArea } from 'src/app/services/parkingArea';
 import { QRCodeComponent } from 'angularx-qrcode';
 import {
   IonButton,

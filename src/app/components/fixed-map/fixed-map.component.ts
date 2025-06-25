@@ -9,7 +9,7 @@ import {
 import * as L from 'leaflet';
 import { GeoPoint } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { ParkingArea } from '../parkingArea';
+import { ParkingArea } from '../../services/parkingArea';
 import { LocationService } from 'src/app/services/location.service';
 
 @Component({

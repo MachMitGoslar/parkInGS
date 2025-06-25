@@ -7,7 +7,7 @@ import {
   IonInput,
   IonGrid,
 } from "@ionic/angular/standalone";
-import { LogControllerService, LogLevel, StatusCode } from 'src/app/helper/log-controller.service';
+import { LogControllerService, LogLevel, StatusCode } from 'src/app/services/log-controller.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -53,7 +53,7 @@ export class LoginComponent  implements OnInit {
     
     this.userSrv.login(this.email, this.password).then((user) => {
       this.logSrv.addLog("Willkommen "+ user?.displayName, LogLevel.Success, 200)
-      this.router.navigate(["/edit/tab2"])
+      this.router.navigate(["/edit/areaList"])
     }, error => {
       this.logSrv.addLog(error, LogLevel.Danger, StatusCode.NotFound)
     })

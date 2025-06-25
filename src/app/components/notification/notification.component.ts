@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IonToast } from '@ionic/angular/standalone';
-import {LogControllerService, LogEntry } from '../log-controller.service';
+
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { LogControllerService, LogEntry} from 'src/app/services/log-controller.service';
 
 @Component({
   selector: 'app-notification',

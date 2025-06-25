@@ -2,11 +2,11 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonIcon, IonTitle, IonToolbar, ModalController, IonButtons, IonButton, IonList, IonItem, IonNote, IonLabel} from '@ionic/angular/standalone';
-import { ParkingArea } from 'src/app/helper/parkingArea';
+import { ParkingArea } from 'src/app/services/parkingArea';
 import { ParkingAreaService } from 'src/app/services/parking-area.service';
 import { DocumentReference, GeoPoint } from '@angular/fire/firestore';
 import { Subject, Subscription } from 'rxjs';
-import { FixedMapComponent } from 'src/app/helper/fixed-map/fixed-map.component';
+import { FixedMapComponent } from 'src/app/components/fixed-map/fixed-map.component';
 import { ParkingControlsComponent } from 'src/app/components/parking-controls/parking-controls.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationButtonComponent } from 'src/app/components/location-button/location-button.component';
@@ -61,9 +61,7 @@ export class AreaPage implements OnInit, OnDestroy {
     public userSrv: UserService
   ) { 
     
-    addIcons({
-      navigate, qrCodeOutline, settingsOutline
-    })
+    addIcons({navigate,qrCodeOutline,settingsOutline});
     this.area = new Subject()
 
   }

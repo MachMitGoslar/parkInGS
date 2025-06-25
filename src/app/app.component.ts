@@ -1,11 +1,10 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { environment } from 'src/environments/environment';
-import { LogControllerService } from './helper/log-controller.service';
-import { NotificationComponent } from './helper/notification/notification.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { LogControllerService } from './services/log-controller.service';
 
 
 @Component({

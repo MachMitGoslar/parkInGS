@@ -11,8 +11,8 @@ import {
 
 } from "@ionic/angular/standalone"
 import { AreaPage } from 'src/app/areaList/area/area.page';
-import { OccupiedBadgeComponent } from 'src/app/helper/occupied-badge/occupied-badge.component';
-import { ParkingArea } from 'src/app/helper/parkingArea';
+import { OccupiedBadgeComponent } from 'src/app/components/occupied-badge/occupied-badge.component';
+import { ParkingArea } from 'src/app/services/parkingArea';
 import { addIcons } from 'ionicons';
 import { location, navigate } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';

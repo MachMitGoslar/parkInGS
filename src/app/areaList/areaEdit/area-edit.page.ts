@@ -14,11 +14,11 @@ import {
   IonInput,
 } from '@ionic/angular/standalone';
 
-import { ParkingArea } from 'src/app/helper/parkingArea';
+import { ParkingArea } from 'src/app/services/parkingArea';
 import { ParkingAreaService } from 'src/app/services/parking-area.service';
-import { MapComponent } from 'src/app/map/map.component';
+import { MapComponent } from 'src/app/components/map/map.component';
 import { GeoPoint } from '@angular/fire/firestore';
-import { LogControllerService, LogLevel } from 'src/app/helper/log-controller.service';
+import { LogControllerService, LogLevel } from 'src/app/services/log-controller.service';
 
 
 @Component({
