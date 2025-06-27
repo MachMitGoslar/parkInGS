@@ -42,7 +42,7 @@ export class QrcodeComponent  implements OnInit {
 
      onChangeURL(url: SafeUrl) {
 
-                this.qrData = location.href+"area/"+this.area.ref?.id
+                this.qrData = location.host+"area/"+this.area.ref?.id
 
       this.qrDownloadLink = url;
     }
