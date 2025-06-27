@@ -36,7 +36,7 @@ export class MapPage {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Changes detected parent:', changes);
+    
   }
 
   startDrawing():void {
@@ -56,7 +56,7 @@ export class MapPage {
   }
 
   scrapDrawing(): void {
-    console.log("Scrapping Drawing")
+    
     this.drawing = false;
     this.points = [];
   }
@@ -71,7 +71,7 @@ export class MapPage {
     const { data, role } = await modal.onWillDismiss();
 
     if (role === 'confirm') {
-      console.log(`Hello, ${data}!`);
+      
     }
   }
 

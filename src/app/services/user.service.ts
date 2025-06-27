@@ -15,7 +15,7 @@ export class UserService {
 
   constructor() {
     this.auth.onAuthStateChanged( currentUser => {
-      console.log("New Current User", currentUser)
+      
       this.user.next(currentUser)
       if(currentUser) {
         this.authenticated = true;
@@ -24,7 +24,7 @@ export class UserService {
       }
     })
     this.auth.authStateReady().then(() => {
-      console.log("Auth State ready")
+      
       this.user.next(this.auth.currentUser)
       if(this.auth.currentUser) {
         this.authenticated = true

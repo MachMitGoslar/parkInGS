@@ -18,7 +18,7 @@ export class NotificationComponent  implements OnInit {
       text: 'Schließen',
       role: 'cancel',
       handler: () => {
-        console.log('Dismiss clicked');
+        
         //this.logCtrl.removeLog()
       },
     }]
@@ -26,14 +26,14 @@ export class NotificationComponent  implements OnInit {
   constructor( public logCtrl: LogControllerService) { 
 
         this.logs = this.logCtrl.logs;
-                      console.log("Initializing", this.logs);
+                      
   }
 
   ngOnInit() {
   }
 
   removeLog(event: any) {
-    console.log(event);
+    
     this.logCtrl.removeLog(event)
   }
 

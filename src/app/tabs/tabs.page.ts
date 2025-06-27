@@ -25,19 +25,19 @@ export class TabsPage {
   }
 
   ionTabsWillChange() {
-    console.log('Leaving view');
+    
     try {
       L.map('map').remove();
     } catch {
-      console.log('no map');
+      
     }
   }
   ionTabsDidChange() {
-    console.log('Left view');
+    
     try {
       L.map('map').remove();
     } catch {
-      console.log('no map');
+      
     }
   }
 }

@@ -53,7 +53,7 @@ export class AreaCardComponent  implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
+    
   }
 
 

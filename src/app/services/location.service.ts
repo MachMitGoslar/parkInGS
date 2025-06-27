@@ -18,7 +18,7 @@ export class LocationService {
   getPermissions(navigator: Navigator) {
     this.$active.next(false);
       navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-        console.log(result)
+        
       if (result.state === 'granted') {
         navigator.geolocation.watchPosition(position => {
           let point = new GeoPoint(position.coords.latitude, position.coords.longitude);

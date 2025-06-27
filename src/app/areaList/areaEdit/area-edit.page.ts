@@ -87,7 +87,7 @@ export class AreaEditPage implements OnInit {
   }
 
   confirm() {
-    console.log("Saving:",this.area);
+    
     this.parkingAreaSrv.saveAreaToDB(this.area).then(() => {
       this.notifcationSrv.addLog("Parkplatz erfolgreich erstellt", LogLevel.Success, 200)
       return this.modalCtrl.dismiss()

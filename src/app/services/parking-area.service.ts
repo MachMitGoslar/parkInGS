@@ -73,7 +73,7 @@ export class ParkingAreaService {
           area_obs.error("Datensatz existiert nicht")
         }
         let data = snapshot;
-        console.log(data);
+        
         let area = ParkingArea.fromData(data);
         area_obs.next(area);
       
@@ -101,19 +101,19 @@ export class ParkingAreaService {
     increaseCars(ref: DocumentReference, value: number): void {
       updateDoc(ref, {
         "occupied": increment(value)
-      }).then(() => console.log("Increased"), error => console.warn(error))
+      })
     }
 
     decreaseCars(ref: DocumentReference, value: number): void {
       updateDoc(ref, {
         "occupied": increment(-value)
-      }).then(() => console.log("Increased"), error => console.warn(error))
+      })
     }
 
     setAmount(area: ParkingArea, factor: number): void {
       updateDoc(area.ref!, {
         "occupied": Math.floor(area.capacity * factor)
-      }).then(() => console.log("Setting amount to " + factor*100))
+      })
     }
 
     sortByLocation(position: GeoPoint): Observable<ParkingArea[]> {

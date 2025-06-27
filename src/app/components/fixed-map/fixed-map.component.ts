@@ -55,7 +55,7 @@ export class FixedMapComponent implements OnInit, OnDestroy {
     }).addTo(map);
 
     return map.whenReady((event) => {
-      console.log("Map should be ready")
+      
       this.locationSrv.$position.subscribe({
         next: location => {
           var myIcon = L.icon({
@@ -74,7 +74,7 @@ export class FixedMapComponent implements OnInit, OnDestroy {
 
   private drawPoligon() {
     this.map?.whenReady(() => {
-      console.log('Map ready, now drawing');
+      
 
       if (this.polygon_layer) this.polygon_layer.clearLayers();
 
@@ -103,7 +103,7 @@ export class FixedMapComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    console.log('Destroying');
+    
     this.map?.remove();
   }
 }

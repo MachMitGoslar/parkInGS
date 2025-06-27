@@ -20,7 +20,7 @@ export class OccupiedBadgeComponent  implements OnInit {
   ngOnInit() {
     try {
       this.amount = (this.occupied / this.capacity)*100
-      console.log(this.amount)
+      
       let amount = this.occupied / this.capacity
       let red = 255 * amount;
       let green = 255 * (1-amount);

@@ -79,8 +79,8 @@ export class AreaPage implements OnInit, OnDestroy {
     this.area = this.parkingAreaSrv.getAreaByRef(this.ref!)
     this.subscriptions.push(this.area.subscribe(value => {
       this.localArea = value
-      console.log("Internalt", this.pageType_internal);
-      console.log("User: ", this.userSrv.user)
+      
+      
     }))
     this.subscriptions.push(this.userSrv.user.subscribe({
       next: user => {

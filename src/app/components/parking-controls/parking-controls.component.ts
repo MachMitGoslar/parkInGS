@@ -42,7 +42,7 @@ export class ParkingControlsComponent  implements OnInit {
 
 
   decrease() {
-    console.log("Decreasing")
+    
     this.parkingAreaSrv.decreaseCars(this.area.ref!, 1);
   }
 

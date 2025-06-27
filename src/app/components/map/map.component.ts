@@ -78,7 +78,7 @@ export class MapComponent implements OnInit, OnDestroy {
       this.positionGroup.addTo(event.target);
 
       this.locationService.$position.subscribe( value => {
-        console.log("Drawing at: ", value)
+        
         this.drawPositionMarker(value)
       })
       if (this.drawing()) {
@@ -125,7 +125,7 @@ export class MapComponent implements OnInit, OnDestroy {
     new L.Marker([position.latitude, position.longitude], {
       icon: icon,
     }).addTo(this.positionGroup);
-    console.log(this.positionGroup)
+    
 
   }
 
@@ -134,7 +134,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   /*addPoint(lat: number, lng: number) {
-    console.log(this.points);
+    
   }*/
 
   private drawPoligon() {
@@ -156,7 +156,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('Destroying');
+    
     this.poligonGroup.clearLayers();
     this.map?.remove();
   }
