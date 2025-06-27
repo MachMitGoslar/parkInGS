@@ -43,7 +43,7 @@ export class FixedMapComponent implements OnInit, OnDestroy {
 
   private async initMap(): Promise<L.Map> {
     let map = L.map('map_' + this.route_id, {
-      dragging: false,
+      dragging: true,
       attributionControl: false,
       zoomControl: true,
       scrollWheelZoom: true,
@@ -65,7 +65,6 @@ export class FixedMapComponent implements OnInit, OnDestroy {
             popupAnchor: [-3, -76],
           })
           if(this.my_marker) this.my_marker.remove();
-          console.log("drawing marker")
           this.my_marker = new L.Marker([location.latitude, location.longitude], {icon: myIcon}).addTo(event.target)
         }
       })
@@ -81,24 +80,25 @@ export class FixedMapComponent implements OnInit, OnDestroy {
 
       this.polygon_layer = L.layerGroup();
 
-      let bounding_box: L.LatLngBounds = new L.LatLngBounds(
-        [51.9193, 10.4301],
-        [51.9193, 10.4301]
-      );
+      let bounding_box: L.LatLngBounds | undefined; 
+
       for (let area of this.areas) {
         if (area.borderPoints && area.borderPoints.length > 0) {
+          bounding_box = new L.LatLngBounds([area.borderPoints[0].latitude, area.borderPoints[0].longitude],[area.borderPoints[0].latitude, area.borderPoints[0].longitude])
           L.polygon(
             area.borderPoints.map((x) => {
               let point: L.LatLngExpression = [x.latitude, x.longitude];
-              bounding_box.extend(point);
+              bounding_box!.extend(point);
               return point;
             })
           ).addTo(this.polygon_layer);
         }
         this.polygon_layer.addTo(this.map!);
       }
-      if (this.map && this.polygon_layer) {
-        this.map.fitBounds(bounding_box);
+      if (this.map && this.polygon_layer && bounding_box) {
+        this.map.wrapLatLngBounds(bounding_box)
+        this.map.flyToBounds(bounding_box);
+
       }
     });
   }

@@ -37,6 +37,7 @@ export class ParkingAreaService {
               capacity: area.capacity,
               borderPoints: area.borderPoints,
               occupied: area.occupied,
+              imgUrl: area.imgUrl,
               updatedAt: serverTimestamp()
           }).then(
             () => {resolve(area)},
@@ -51,6 +52,7 @@ export class ParkingAreaService {
                 capacity: area.capacity,
                 borderPoints: area.borderPoints,
                 occupied: area.occupied,
+                imgUrl: area.imgUrl,
                 createdAt: serverTimestamp(),
                 updatedAt: serverTimestamp()
             }).then(
