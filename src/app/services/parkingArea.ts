@@ -1,3 +1,4 @@
+import { SafeUrl } from "@angular/platform-browser";
 import { DocumentReference, GeoPoint, Timestamp, addDoc, collection, documentId, getDoc, setDoc } from "@firebase/firestore";
 
 
@@ -15,6 +16,7 @@ export class ParkingArea {
     public updatedAt?: Date
     public createdAt?: Date
     public distance_from_you?: number;
+    public imgUrl: SafeUrl = 'https://picsum.photos/seed/999/1200/400'
 
     constructor() {
     }
@@ -56,6 +58,7 @@ export class ParkingArea {
         area.readable_city = document_data["city"] ?? "";
         area.updatedAt = document_data["updatedAt"]?.toDate()
         area.createdAt = document_data["createdAt"]?.toDate()
+        area.imgUrl = document_data["imgUrl"] ?? 'https://picsum.photos/seed/'+data.ref?.id+'/1200/400'
         area.ref = data.ref;
         return area
     }

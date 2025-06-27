@@ -17,14 +17,13 @@ import {
   IonMenuButton,
   IonButtons,
   IonGrid,
-  IonCol
-} from '@ionic/angular/standalone';
+  IonCol, IonButton } from '@ionic/angular/standalone';
 import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { ParkingArea } from '../services/parkingArea';
 import { ParkingAreaService } from '../services/parking-area.service';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { location, add } from 'ionicons/icons';
+import { location, add, logOutOutline } from 'ionicons/icons';
 import {AreaPage } from './area/area.page'
 import {  LogLevel, LogControllerService } from '../services/log-controller.service';
 import { AreaEditPage } from './areaEdit/area-edit.page';
@@ -33,11 +32,12 @@ import { UserService } from '../services/user.service';
 import { AreaCardComponent } from "../components/area-card/area-card.component";
 import { LocationButtonComponent } from '../components/location-button/location-button.component';
 import { LocationService } from '../services/location.service';
+import { User } from '@angular/fire/auth';
 @Component({
   selector: 'app-area-list',
   templateUrl: 'areaList.page.html',
   styleUrls: ['areaList.page.scss'],
-  imports: [
+  imports: [IonButton, 
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -67,7 +67,8 @@ import { LocationService } from '../services/location.service';
 export class AreaListPage {
   public areas = new Observable<ParkingArea[]>;
   // public $user: ReplaySubject<User | null> = new ReplaySubject(1);
-  // private _subscriptions: Subscription[] = [];
+  public user: User | null = null
+  private _subscriptions: Subscription[] = [];
 
   constructor(
     public parkingService: ParkingAreaService,
@@ -91,9 +92,18 @@ export class AreaListPage {
 
       }
     }
-    )
 
-    addIcons({ location, add});
+    )
+    this._subscriptions.push(this.userSrv.user.subscribe({
+      next: user => {
+        this.user = user;
+      },
+      error: error => {
+        this.user = null
+      }
+    }))
+
+    addIcons({ location, add, logOutOutline});
   }
 
 
@@ -127,5 +137,9 @@ export class AreaListPage {
       },
     });
     modal.present();
+  }
+
+  logout() {
+    this.userSrv.logout()
   }
 }

@@ -15,6 +15,7 @@ import { navigate, qrCodeOutline, settingsOutline } from 'ionicons/icons';
 import { UserService } from 'src/app/services/user.service';
 import { QrcodeComponent } from 'src/app/components/qrcode/qrcode.component';
 import { AreaEditPage } from '../areaEdit/area-edit.page';
+import { User } from '@angular/fire/auth';
 
 
 @Component({
@@ -51,6 +52,8 @@ export class AreaPage implements OnInit, OnDestroy {
   public points: GeoPoint[] = []
   private subscriptions: Subscription[] = [];
   private localArea?: ParkingArea
+      public user: User | null = null;
+
 
 
   constructor(
@@ -74,9 +77,19 @@ export class AreaPage implements OnInit, OnDestroy {
       this.userSrv.loginAnon();
     }
     this.area = this.parkingAreaSrv.getAreaByRef(this.ref!)
-    this.area.subscribe(value => {
+    this.subscriptions.push(this.area.subscribe(value => {
       this.localArea = value
-    })
+      console.log("Internalt", this.pageType_internal);
+      console.log("User: ", this.userSrv.user)
+    }))
+    this.subscriptions.push(this.userSrv.user.subscribe({
+      next: user => {
+        this.user = user;
+      },
+      error: error => {
+        this.user = null
+      }
+    }))
   }
 
   ngOnDestroy() {

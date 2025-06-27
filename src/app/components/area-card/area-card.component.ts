@@ -69,9 +69,4 @@ export class AreaCardComponent  implements OnInit, OnChanges {
 
 
 
-    get area_image() {
-      let rand =  Math.floor(Math.random()*10000)
-
-     return 'https://picsum.photos/seed/'+this.area.ref?.id+'/1200/400'
-    }
 }

@@ -16,7 +16,7 @@
         </a>
       </ion-button>
       }
-      @if(!pageType_internal || userSrv.user ) {
+      @if(!pageType_internal || user != null ) {
               <app-location-button></app-location-button>
 
         <ion-button (click)="openQR(narea)">
