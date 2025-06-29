@@ -17,6 +17,7 @@ export class ParkingArea {
     public createdAt?: Date
     public distance_from_you?: number;
     public imgUrl: SafeUrl = 'https://picsum.photos/seed/999/1200/400'
+    public disable_tracking: boolean = false;
 
     constructor() {
     }
@@ -59,6 +60,7 @@ export class ParkingArea {
         area.updatedAt = document_data["updatedAt"]?.toDate()
         area.createdAt = document_data["createdAt"]?.toDate()
         area.imgUrl = document_data["imgUrl"] ?? 'https://picsum.photos/seed/'+data.ref?.id+'/1200/400'
+        area.disable_tracking = document_data["disable_tracking"] ?? false;
         area.ref = data.ref;
         return area
     }

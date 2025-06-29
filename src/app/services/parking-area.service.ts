@@ -38,8 +38,9 @@ export class ParkingAreaService {
               borderPoints: area.borderPoints,
               occupied: area.occupied,
               imgUrl: area.imgUrl,
-              updatedAt: serverTimestamp()
-          }).then(
+              updatedAt: serverTimestamp(),
+              disable_tracking: area.disable_tracking
+            }).then(
             () => {resolve(area)},
             error => {reject(error)}
           )
@@ -54,7 +55,8 @@ export class ParkingAreaService {
                 occupied: area.occupied,
                 imgUrl: area.imgUrl,
                 createdAt: serverTimestamp(),
-                updatedAt: serverTimestamp()
+                updatedAt: serverTimestamp(),
+                disable_tracking: area.disable_tracking
             }).then(
                 ref => {
                   area.ref = ref;

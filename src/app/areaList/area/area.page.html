@@ -55,8 +55,13 @@
     </ion-item>
     <ion-item>
       <ion-label> Füllstand </ion-label>
-      <ion-note slot="end">
+            <ion-note slot="end">
+
+      @if (!narea.disable_tracking) {
         <p>{{narea.occupied}} / {{narea.capacity}}</p>
+      } @else {
+        <p> Parküberwachung deaktiviert</p>
+      }
       </ion-note>
     </ion-item>
     <app-parking-controls [override_user]="!pageType_internal" [area]="narea"></app-parking-controls>

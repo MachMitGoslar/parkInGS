@@ -41,7 +41,7 @@ export class QrcodeComponent  implements OnInit {
   ngOnInit() {}
 
      onChangeURL(url: SafeUrl) {
-
+                //TODO: Resolve this for BASE_HREF withouth location.url
                 this.qrData = "https://"+location.host+"/parkings/area/"+this.area.ref?.id
 
       this.qrDownloadLink = url;

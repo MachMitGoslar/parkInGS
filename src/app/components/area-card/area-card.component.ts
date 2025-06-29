@@ -7,9 +7,7 @@ import {
   IonCardTitle,
   ModalController,
   IonIcon,
-  IonButton,
-
-} from "@ionic/angular/standalone"
+  IonButton, IonNote } from "@ionic/angular/standalone"
 import { AreaPage } from 'src/app/areaList/area/area.page';
 import { OccupiedBadgeComponent } from 'src/app/components/occupied-badge/occupied-badge.component';
 import { ParkingArea } from 'src/app/services/parkingArea';
@@ -22,7 +20,7 @@ import { DistancePipe } from 'src/app/pipes/distance.pipe';
   selector: 'app-area-card',
   templateUrl: './area-card.component.html',
   styleUrls: ['./area-card.component.scss'],
-  imports: [
+  imports: [IonNote, 
       IonCard,
       IonCardContent,
       IonCardHeader,

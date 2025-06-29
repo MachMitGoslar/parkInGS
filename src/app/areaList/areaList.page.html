@@ -48,7 +48,11 @@
               <h2>{{area.name}}</h2>
               <p> {{area.readable_street}} | {{area.readable_plz}} {{area.readable_city}} </p>
             </ion-label>
+            @if(!area.disable_tracking) {
             <app-occupied-badge slot="end" [occupied]="area.occupied" [capacity]="area.capacity"> </app-occupied-badge>
+            } @else {
+              Überwachung deaktiviert
+            }
           </ion-item>
         </ion-item-sliding>
       }

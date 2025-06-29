@@ -17,7 +17,7 @@ import {
   IonMenuButton,
   IonButtons,
   IonGrid,
-  IonCol, IonButton } from '@ionic/angular/standalone';
+  IonCol, IonButton, IonNote } from '@ionic/angular/standalone';
 import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { ParkingArea } from '../services/parkingArea';
 import { ParkingAreaService } from '../services/parking-area.service';
@@ -37,7 +37,7 @@ import { User } from '@angular/fire/auth';
   selector: 'app-area-list',
   templateUrl: 'areaList.page.html',
   styleUrls: ['areaList.page.scss'],
-  imports: [IonButton, 
+  imports: [IonNote, IonButton, 
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -58,7 +58,8 @@ import { User } from '@angular/fire/auth';
     AreaCardComponent,
     LocationButtonComponent,
     IonGrid,
-    IonCol
+    IonCol,
+    IonNote
 ],
   providers: [
     AreaEditPage

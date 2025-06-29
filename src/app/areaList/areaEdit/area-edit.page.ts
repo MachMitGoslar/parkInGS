@@ -11,8 +11,7 @@ import {
   IonButton,
   IonList,
   IonItem,
-  IonInput,
-} from '@ionic/angular/standalone';
+  IonInput, IonToggle } from '@ionic/angular/standalone';
 
 import { ParkingArea } from 'src/app/services/parkingArea';
 import { ParkingAreaService } from 'src/app/services/parking-area.service';
@@ -26,7 +25,7 @@ import { LogControllerService, LogLevel } from 'src/app/services/log-controller.
   templateUrl: './area-edit.page.html',
   styleUrls: ['./area-edit.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonToggle, 
     IonContent,
     IonHeader,
     IonTitle,
@@ -67,7 +66,9 @@ export class AreaEditPage implements OnInit {
       "address": new FormControl(this.area.readable_street, [Validators.required]),
       "plz": new FormControl(this.area.readable_plz, [Validators.required, /*Validators.pattern("\b\d{5}\b")*/]),
       "city": new FormControl(this.area.readable_city, Validators.required),
-      "capacity": new FormControl(this.area.capacity, [Validators.required, Validators.min(1)])
+      "capacity": new FormControl(this.area.capacity, [Validators.required, Validators.min(1)]),
+      "imgUrl": new FormControl(this.area.imgUrl, [Validators.required]),
+      "disable_tracking": new FormControl(this.area.disable_tracking, [Validators.required])
     })
     this.form.valueChanges.subscribe(values => {
       this.area.name = values.name;
@@ -75,6 +76,8 @@ export class AreaEditPage implements OnInit {
       this.area.readable_plz = values.plz;
       this.area.readable_city = values.city;
       this.area.capacity = values.capacity
+      this.area.imgUrl = values.imgUrl;
+      this.area.disable_tracking = values.disable_tracking;
     })
   }
 

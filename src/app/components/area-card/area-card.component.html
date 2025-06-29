@@ -21,7 +21,9 @@
   </ion-card-header>
 
   <ion-card-content>
+    @if(!area.disable_tracking) {
     <app-occupied-badge slot="end" [occupied]="area.occupied" [capacity]="area.capacity"> </app-occupied-badge>
+    }
 
     <ion-button [href]="'maps://maps.google.com/?q='+area.borderPoints[0].latitude+','+area.borderPoints[0].longitude" fill="outline">
       <ion-icon slot="start" name="navigate"></ion-icon>
