@@ -17,7 +17,7 @@ import {
   IonMenuButton,
   IonButtons,
   IonGrid,
-  IonCol, IonButton, IonNote } from '@ionic/angular/standalone';
+  IonCol, IonButton, IonNote, IonCard } from '@ionic/angular/standalone';
 import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { ParkingArea } from '../services/parkingArea';
 import { ParkingAreaService } from '../services/parking-area.service';
@@ -33,11 +33,12 @@ import { AreaCardComponent } from "../components/area-card/area-card.component";
 import { LocationButtonComponent } from '../components/location-button/location-button.component';
 import { LocationService } from '../services/location.service';
 import { User } from '@angular/fire/auth';
+import { IntroCardComponent } from '../components/intro/intro-card/intro-card.component';
 @Component({
   selector: 'app-area-list',
   templateUrl: 'areaList.page.html',
   styleUrls: ['areaList.page.scss'],
-  imports: [IonNote, IonButton, 
+  imports: [IonCard, IonNote, IonButton, 
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -59,7 +60,8 @@ import { User } from '@angular/fire/auth';
     LocationButtonComponent,
     IonGrid,
     IonCol,
-    IonNote
+    IonNote,
+    IntroCardComponent
 ],
   providers: [
     AreaEditPage

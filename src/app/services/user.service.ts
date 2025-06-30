@@ -1,21 +1,23 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, AuthModule, signInAnonymously, signInWithEmailAndPassword, User } from '@angular/fire/auth';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { Auth, signInAnonymously, signInWithEmailAndPassword, User} from '@angular/fire/auth';
+import { Observable, ReplaySubject, Subject } from 'rxjs'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private auth = inject(Auth)
+  private auth = inject(Auth);
   //public $user: Observable<User>
   public user: ReplaySubject<User | null> = new ReplaySubject(1)
   public authenticated: boolean = false;
   
 
   constructor() {
+
     this.auth.onAuthStateChanged( currentUser => {
-      
+    //
       this.user.next(currentUser)
       if(currentUser) {
         this.authenticated = true;

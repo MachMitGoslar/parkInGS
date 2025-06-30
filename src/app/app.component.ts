@@ -21,5 +21,8 @@ export class AppComponent {
   constructor(
         private logCtrl: LogControllerService, 
     
-  ) {}
+  ) {
+        if(!environment.production) {
+    }
+  }
 }

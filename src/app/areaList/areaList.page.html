@@ -55,6 +55,8 @@
             }
           </ion-item>
         </ion-item-sliding>
+      } @empty {
+        <ion-item color="warning"> Noch keine Parkplätze angelegt </ion-item>
       }
     }
     @else {
@@ -64,6 +66,9 @@
 
         <app-area-card [area]="area"></app-area-card>
 
+      }
+      @empty {
+        <app-intro-card></app-intro-card>
       }
               </ion-col>
         </ion-grid>

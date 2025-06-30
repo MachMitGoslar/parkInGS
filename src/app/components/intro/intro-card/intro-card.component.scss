@@ -1,0 +1,13 @@
+.title_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+ion-card img {
+    aspect-ratio: 21/9;
+    object-fit: cover;
+    image-rendering: crisp-edges;
+    width: 100%
+}
+
